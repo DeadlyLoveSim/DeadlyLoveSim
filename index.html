@@ -1,166 +1,252 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Insight Academy - Rivais</title>
-  
-  <!-- Fonte parecida com a do site YandereDev -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-  
-  <style>
-    /* Reset básico */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Insight Academy — Personagens</title>
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #ffe6f0 0%, #ffccda 100%);
-      color: #333;
-      min-height: 100vh;
-      padding-top: 70px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 
-    header {
-      position: fixed;
-      top: 0;
+<style>
+  * {
+    margin:0; padding:0; box-sizing:border-box;
+  }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #ffe6f0 0%, #ffccda 100%);
+    color: #333;
+    min-height: 100vh;
+    padding-top: 70px;
+  }
+  header {
+    position: fixed;
+    top:0; left:0; width:100%;
+    background:#ff4f70;
+    color:#fff;
+    padding: 20px 40px;
+    font-weight:700;
+    font-size:24px;
+    text-align:center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(255,79,112,0.4);
+    user-select:none;
+    z-index: 1000;
+  }
+  main {
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  /* Grid de personagens */
+  .character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .char-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(255,79,112,0.15);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    user-select:none;
+  }
+  .char-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255,79,112,0.3);
+  }
+  .char-card img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .char-card .char-name {
+    padding: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    color: #ff4f70;
+    text-align: center;
+  }
+
+  /* Detalhes do personagem */
+  .char-detail {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(255,79,112,0.15);
+    padding: 24px;
+    margin-bottom: 40px;
+    display: none;
+  }
+  .char-detail.active {
+    display: block;
+  }
+  .char-detail img {
+    float: left;
+    width: 250px;
+    height: 350px;
+    margin-right: 24px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(255,79,112,0.3);
+  }
+  .char-detail h2 {
+    color: #ff4f70;
+    margin-bottom: 16px;
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: 1px;
+  }
+  .char-detail p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  .char-detail blockquote {
+    font-style: italic;
+    border-left: 4px solid #ff4f70;
+    padding-left: 16px;
+    margin-top: 20px;
+    color: #ff4f70;
+  }
+  .close-btn {
+    display: inline-block;
+    margin-top: 24px;
+    background-color: #ff4f70;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    user-select:none;
+    text-decoration: none;
+  }
+  .close-btn:hover {
+    background-color: #e04367;
+  }
+
+  /* Responsivo */
+  @media(max-width:700px) {
+    .char-detail img {
+      float: none;
       width: 100%;
-      background-color: #ff4f70;
-      color: white;
-      padding: 20px 40px;
-      box-shadow: 0 4px 10px rgba(255, 79, 112, 0.4);
-      z-index: 1000;
-      font-weight: 700;
-      font-size: 24px;
-      text-align: center;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      user-select: none;
+      height: auto;
+      margin: 0 0 20px 0;
     }
+  }
+</style>
 
-    main {
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .rival-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(255, 79, 112, 0.15);
-      display: flex;
-      overflow: hidden;
-      margin-bottom: 40px;
-      transition: transform 0.3s ease;
-      cursor: default;
-    }
-
-    .rival-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(255, 79, 112, 0.3);
-    }
-
-    .rival-image {
-      width: 300px;
-      object-fit: cover;
-    }
-
-    .rival-info {
-      padding: 24px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .rival-info h2 {
-      color: #ff4f70;
-      margin-bottom: 12px;
-      font-weight: 700;
-      font-size: 28px;
-      letter-spacing: 1px;
-    }
-
-    .rival-info p {
-      font-size: 16px;
-      line-height: 1.4;
-      margin-bottom: 10px;
-      color: #555;
-    }
-
-    blockquote {
-      font-style: italic;
-      border-left: 4px solid #ff4f70;
-      padding-left: 16px;
-      margin-top: 20px;
-      color: #ff4f70;
-    }
-
-    .btn-next {
-      align-self: flex-start;
-      margin-top: 20px;
-      background-color: #ff4f70;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 6px;
-      color: white;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      user-select: none;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-next:hover {
-      background-color: #e04367;
-    }
-
-    /* Responsivo para telas menores */
-    @media (max-width: 700px) {
-      .rival-card {
-        flex-direction: column;
-      }
-      .rival-image {
-        width: 100%;
-        height: auto;
-      }
-    }
-  </style>
 </head>
-
 <body>
-  <header>
-    Insight Academy — Rivais
-  </header>
 
-  <main>
-    <section class="rival-card">
-      <img 
-        src="https://via.placeholder.com/300x400.png?text=Hiko" 
-        alt="Hiko" 
-        class="rival-image"
-      />
-      <div class="rival-info">
-        <h2>Hiko — Semana 1</h2>
-        <p><strong>Personalidade:</strong> Lovely</p>
-        <p><strong>Clube:</strong> Jardinagem</p>
-        <p><strong>Status:</strong> Ativa</p>
-        <p>
-          Hiko é gentil, amável e muito próxima do Senpai. A doçura dela encanta todos ao redor, mas seu amor pelo Senpai pode custar caro...
-        </p>
-        <blockquote>
-          "Eu só quero vê-lo sorrir. Mesmo que isso custe tudo."
-        </blockquote>
-        <a href="#" class="btn-next">Próxima rival →</a>
-      </div>
-    </section>
-  </main>
+<header>Insight Academy — Personagens</header>
+
+<main>
+  <section class="character-grid" aria-label="Seleção de personagens">
+    <div class="char-card" data-char="ruko">
+      <img src="https://via.placeholder.com/300x400.png?text=Ruko+Aiko" alt="Ruko Aiko" />
+      <div class="char-name">Ruko Aiko (Yandere)</div>
+    </div>
+    <div class="char-card" data-char="hiko">
+      <img src="https://via.placeholder.com/300x400.png?text=Hiko" alt="Hiko" />
+      <div class="char-name">Hiko (Rival 1)</div>
+    </div>
+    <div class="char-card" data-char="rival2">
+      <img src="https://via.placeholder.com/300x400.png?text=Rival+2" alt="Rival 2" />
+      <div class="char-name">Rival 2</div>
+    </div>
+    <div class="char-card" data-char="rival3">
+      <img src="https://via.placeholder.com/300x400.png?text=Rival+3" alt="Rival 3" />
+      <div class="char-name">Rival 3</div>
+    </div>
+    <!-- Adicione mais personagens aqui -->
+  </section>
+
+  <!-- Detalhes dos personagens (inicialmente escondidos) -->
+  <section id="char-ruko" class="char-detail" role="region" aria-live="polite">
+    <img src="https://via.placeholder.com/300x400.png?text=Ruko+Aiko" alt="Ruko Aiko" />
+    <h2>Ruko Aiko — Yandere</h2>
+    <p><strong>Personalidade:</strong> Obsessiva, inteligente e determinada.</p>
+    <p><strong>Status:</strong> Protagonista</p>
+    <p>Ruko Aiko tem uma obsessão profunda pelo Senpai e está disposta a tudo para eliminá-la concorrência.</p>
+    <blockquote>"Eu preciso dele. Nada vai me impedir."</blockquote>
+    <button class="close-btn" aria-label="Fechar detalhes de Ruko Aiko">Fechar</button>
+  </section>
+
+  <section id="char-hiko" class="char-detail" role="region" aria-live="polite">
+    <img src="https://via.placeholder.com/300x400.png?text=Hiko" alt="Hiko" />
+    <h2>Hiko — Rival 1</h2>
+    <p><strong>Personalidade:</strong> Lovely</p>
+    <p><strong>Clube:</strong> Jardinagem</p>
+    <p><strong>Status:</strong> Ativa</p>
+    <p>Hiko é gentil, amável e muito próxima do Senpai. A doçura dela encanta todos ao redor, mas seu amor pelo Senpai pode custar caro...</p>
+    <blockquote>"Eu só quero vê-lo sorrir. Mesmo que isso custe tudo."</blockquote>
+    <button class="close-btn" aria-label="Fechar detalhes de Hiko">Fechar</button>
+  </section>
+
+  <section id="char-rival2" class="char-detail" role="region" aria-live="polite">
+    <img src="https://via.placeholder.com/300x400.png?text=Rival+2" alt="Rival 2" />
+    <h2>Rival 2</h2>
+    <p><strong>Personalidade:</strong> (Descreva aqui)</p>
+    <p><strong>Status:</strong> (Ativa/Inativa)</p>
+    <p>Descrição da segunda rival.</p>
+    <blockquote>"Frase de efeito ou pensamento dela."</blockquote>
+    <button class="close-btn" aria-label="Fechar detalhes de Rival 2">Fechar</button>
+  </section>
+
+  <section id="char-rival3" class="char-detail" role="region" aria-live="polite">
+    <img src="https://via.placeholder.com/300x400.png?text=Rival+3" alt="Rival 3" />
+    <h2>Rival 3</h2>
+    <p><strong>Personalidade:</strong> (Descreva aqui)</p>
+    <p><strong>Status:</strong> (Ativa/Inativa)</p>
+    <p>Descrição da terceira rival.</p>
+    <blockquote>"Frase de efeito ou pensamento dela."</blockquote>
+    <button class="close-btn" aria-label="Fechar detalhes de Rival 3">Fechar</button>
+  </section>
+</main>
+
+<script>
+  // Selecionar todos os cards
+  const cards = document.querySelectorAll('.char-card');
+  const details = document.querySelectorAll('.char-detail');
+
+  function hideAllDetails() {
+    details.forEach(d => d.classList.remove('active'));
+  }
+
+  // Abrir o detalhe do personagem clicado
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const charId = 'char-' + card.getAttribute('data-char');
+      hideAllDetails();
+      const detailSection = document.getElementById(charId);
+      if (detailSection) {
+        detailSection.classList.add('active');
+        // Scroll suave para o detalhe
+        detailSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Fechar ao clicar no botão
+  details.forEach(detail => {
+    const btn = detail.querySelector('.close-btn');
+    btn.addEventListener('click', () => {
+      detail.classList.remove('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+
 </body>
 </html>
