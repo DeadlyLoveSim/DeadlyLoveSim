@@ -1,99 +1,166 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Insight Academy - Rivais</title>
+  
+  <!-- Fonte parecida com a do site YandereDev -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
-
-    body {
-      font-family: 'Quicksand', sans-serif;
-      background: linear-gradient(#fff0f5, #ffe6f0);
+    /* Reset básico */
+    * {
       margin: 0;
       padding: 0;
-      text-align: center;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #ffe6f0 0%, #ffccda 100%);
+      color: #333;
+      min-height: 100vh;
+      padding-top: 70px;
     }
 
     header {
-      background-color: #ff6f91;
-      color: white;
-      padding: 30px 0;
-      font-size: 2em;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .cards-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      padding: 40px 20px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      width: 250px;
-      text-align: center;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-    }
-
-    .card img {
+      position: fixed;
+      top: 0;
       width: 100%;
-      height: 350px;
+      background-color: #ff4f70;
+      color: white;
+      padding: 20px 40px;
+      box-shadow: 0 4px 10px rgba(255, 79, 112, 0.4);
+      z-index: 1000;
+      font-weight: 700;
+      font-size: 24px;
+      text-align: center;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .rival-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(255, 79, 112, 0.15);
+      display: flex;
+      overflow: hidden;
+      margin-bottom: 40px;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+
+    .rival-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(255, 79, 112, 0.3);
+    }
+
+    .rival-image {
+      width: 300px;
       object-fit: cover;
     }
 
-    .card h3 {
-      color: #d9366e;
-      margin: 16px 0 10px;
+    .rival-info {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    .button {
-      display: inline-block;
-      background-color: #ff6f91;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-bottom: 20px;
-      transition: background 0.3s ease;
+    .rival-info h2 {
+      color: #ff4f70;
+      margin-bottom: 12px;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 1px;
     }
 
-    .button:hover {
+    .rival-info p {
+      font-size: 16px;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    blockquote {
+      font-style: italic;
+      border-left: 4px solid #ff4f70;
+      padding-left: 16px;
+      margin-top: 20px;
+      color: #ff4f70;
+    }
+
+    .btn-next {
+      align-self: flex-start;
+      margin-top: 20px;
       background-color: #ff4f70;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      user-select: none;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-next:hover {
+      background-color: #e04367;
+    }
+
+    /* Responsivo para telas menores */
+    @media (max-width: 700px) {
+      .rival-card {
+        flex-direction: column;
+      }
+      .rival-image {
+        width: 100%;
+        height: auto;
+      }
     }
   </style>
 </head>
-<body>
 
+<body>
   <header>
-    Escolha uma Rival
+    Insight Academy — Rivais
   </header>
 
-  <div class="cards-container">
-    <!-- Card da Hiko -->
-    <div class="card">
-      <img src="https://via.placeholder.com/250x350?text=Hiko" alt="Hiko">
-      <h3>Hiko 🌸</h3>
-      <a href="hiko.html" class="button">Ver detalhes</a>
-    </div>
-
-    <!-- Futuras rivais -->
-    <!--
-    <div class="card">
-      <img src="link-da-imagem.jpg" alt="Rival 2">
-      <h3>Rival 2</h3>
-      <a href="rival2.html" class="button">Ver detalhes</a>
-    </div>
-    -->
-  </div>
-
+  <main>
+    <section class="rival-card">
+      <img 
+        src="https://via.placeholder.com/300x400.png?text=Hiko" 
+        alt="Hiko" 
+        class="rival-image"
+      />
+      <div class="rival-info">
+        <h2>Hiko — Semana 1</h2>
+        <p><strong>Personalidade:</strong> Lovely</p>
+        <p><strong>Clube:</strong> Jardinagem</p>
+        <p><strong>Status:</strong> Ativa</p>
+        <p>
+          Hiko é gentil, amável e muito próxima do Senpai. A doçura dela encanta todos ao redor, mas seu amor pelo Senpai pode custar caro...
+        </p>
+        <blockquote>
+          "Eu só quero vê-lo sorrir. Mesmo que isso custe tudo."
+        </blockquote>
+        <a href="#" class="btn-next">Próxima rival →</a>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
