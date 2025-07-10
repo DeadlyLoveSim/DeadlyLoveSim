@@ -7,106 +7,60 @@
     @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
 
     body {
-      margin: 0;
-      padding: 0;
       font-family: 'Quicksand', sans-serif;
       background: linear-gradient(#fff0f5, #ffe6f0);
-      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
     }
 
     header {
       background-color: #ff6f91;
       color: white;
-      padding: 20px;
-      text-align: center;
+      padding: 30px 0;
+      font-size: 2em;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
-    h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px 20px;
     }
 
     .card {
       background: white;
       border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
       overflow: hidden;
-      display: flex;
-      flex-wrap: wrap;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
     }
 
     .card img {
-      width: 300px;
+      width: 100%;
+      height: 350px;
       object-fit: cover;
     }
 
-    .card-content {
-      padding: 20px;
-      flex: 1;
-    }
-
-    .card-content h2 {
+    .card h3 {
       color: #d9366e;
-      font-size: 2em;
-    }
-
-    .info p {
-      margin: 6px 0;
-    }
-
-    blockquote {
-      background: #fff0f5;
-      border-left: 5px solid #ff6f91;
-      margin-top: 20px;
-      padding: 10px 15px;
-      font-style: italic;
+      margin: 16px 0 10px;
     }
 
     .button {
       display: inline-block;
-      margin-top: 20px;
       background-color: #ff6f91;
       color: white;
-      padding: 10px 20px;
+      padding: 10px 16px;
       border-radius: 8px;
       text-decoration: none;
+      margin-bottom: 20px;
       transition: background 0.3s ease;
-    }
-
-    .button:hover {
-      background-color: #ff4f70;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>Insight Academy – Rivais</h1>
-  </header>
-
-  <div class="container">
-    <div class="card">
-      <img src="https://via.placeholder.com/300x400?text=Hiko" alt="Hiko">
-      <div class="card-content">
-        <h2>Semana 1 – Hiko 🌸</h2>
-        <div class="info">
-          <p><strong>Personalidade:</strong> Lovely</p>
-          <p><strong>Clube:</strong> Jardinagem</p>
-          <p><strong>Status:</strong> Ativa</p>
-        </div>
-        <p>Hiko é gentil, amável e muito próxima do Senpai. A doçura dela encanta todos ao redor, mas seu amor pelo Senpai pode custar caro...</p>
-        <blockquote>"Eu só quero vê-lo sorrir. Mesmo que isso custe tudo."</blockquote>
-        <a href="#" class="button">Próxima rival →</a>
-      </div>
-    </div>
-  </div>
-
-</body>
-</html>
