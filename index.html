@@ -1,22 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Rival 1 – Hiko</title>
+  <title>Insight Academy - Rivais</title>
   <style>
-    body { font-family: Arial; background: #fef8f8; color: #333; padding: 20px; }
-    h1 { color: #d9366e; }
-    .card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(#fff0f5, #ffe6f0);
+      color: #333;
+    }
+
+    header {
+      background-color: #ff6f91;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .card img {
+      width: 300px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .card-content h2 {
+      color: #d9366e;
+      font-size: 2em;
+    }
+
+    .info p {
+      margin: 6px 0;
+    }
+
+    blockquote {
+      background: #fff0f5;
+      border-left: 5px solid #ff6f91;
+      margin-top: 20px;
+      padding: 10px 15px;
+      font-style: italic;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #ff6f91;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #ff4f70;
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Semana 1 – Hiko 🌸</h1>
-    <p><strong>Personalidade:</strong> Lovely</p>
-    <p><strong>Clube:</strong> Jardinagem</p>
-    <p><strong>Status:</strong> Ativa</p>
-    <p><strong>Descrição:</strong> Hiko é gentil, amável e muito próxima do Senpai. A doçura dela encanta todos ao redor, mas seu amor pelo Senpai pode custar caro...</p>
-    <blockquote>"Eu só quero vê-lo sorrir. Mesmo que isso custe tudo."</blockquote>
+
+  <header>
+    <h1>Insight Academy – Rivais</h1>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <img src="https://via.placeholder.com/300x400?text=Hiko" alt="Hiko">
+      <div class="card-content">
+        <h2>Semana 1 – Hiko 🌸</h2>
+        <div class="info">
+          <p><strong>Personalidade:</strong> Lovely</p>
+          <p><strong>Clube:</strong> Jardinagem</p>
+          <p><strong>Status:</strong> Ativa</p>
+        </div>
+        <p>Hiko é gentil, amável e muito próxima do Senpai. A doçura dela encanta todos ao redor, mas seu amor pelo Senpai pode custar caro...</p>
+        <blockquote>"Eu só quero vê-lo sorrir. Mesmo que isso custe tudo."</blockquote>
+        <a href="#" class="button">Próxima rival →</a>
+      </div>
+    </div>
   </div>
+
 </body>
 </html>
